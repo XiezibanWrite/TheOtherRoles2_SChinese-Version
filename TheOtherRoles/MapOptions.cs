@@ -15,7 +15,6 @@ namespace TheOtherRoles{
         public static bool ghostsSeeVotes = true;
         public static bool showRoleSummary = true;
         public static bool disableMedscanWalking = false;
-
         public static bool allowParallelMedBayScans = false;
         public static bool showLighterDarker = true;
         public static bool toggleCursor = true;
@@ -60,7 +59,7 @@ namespace TheOtherRoles{
             shieldFirstKill = CustomOptionHolder.shieldFirstKill.getBool();
             disableCamsRoundOne = CustomOptionHolder.disableCamsRound1.getBool();
             disableMedscanWalking = CustomOptionHolder.disableMedbayWalk.getBool();
-			isRoundOne = true; 
+            isRoundOne = true; 
             firstKillPlayer = null;
             restrictDevices = CustomOptionHolder.restrictDevices.getSelection();
             restrictAdminTime = restrictAdminTimeMax = CustomOptionHolder.restrictAdmin.getFloat();

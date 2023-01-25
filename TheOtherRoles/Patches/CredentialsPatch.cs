@@ -10,18 +10,20 @@ namespace TheOtherRoles.Patches {
     [HarmonyPatch]
     public static class CredentialsPatch {
         public static string fullCredentialsVersion = 
-$@"<size=130%><color=#ff351f>TheOtherRolesCE</color></size> v{TheOtherRolesPlugin.Version.ToString() + (TheOtherRolesPlugin.betaDays>0 ? "-BETA": "")}";
+$@"<size=130%><color=#ff351f>超多职业CE版</color></size> v{TheOtherRolesPlugin.Version.ToString() + (TheOtherRolesPlugin.betaDays>0 ? "-BETA": "")}";
 
         public static string fullCredentials = 
-$@"<size=130%><color=#ff351f>TheOtherRoles Community Edition</color></size> v{TheOtherRolesPlugin.Version.ToString()}
-<size=60%>
-Modded by <color=#FCCE03FF>JustASysAdmin</color>, based on TheOtherRoles by <color=#FCCE03FF>Eisbison</color>.<br>Additional artwork by <color=#FCCE03FF>SvettyScribbles</color> and <color=#FCCE03FF>JustASysAdmin</color>.</size>";
+$@"<size=60%>
+模组制作：<color=#FCCE03FF>JustASysAdmin</color>, 原版超多职业作者： <color=#FCCE03FF>Eisbison</color>.<br>其他图片:<color=#FCCE03FF>SvettyScribbles</color>和<color=#FCCE03FF>JustASysAdmin</color>.
+汉化:<color=#ff351f>四个憨批汉化组</color>
+翻译:<color=#FFFFE0>Among us</color></size>";
 
     public static string mainMenuCredentials = 
-$@"Modded by <color=#FCCE03FF>JustASysAdmin</color>, based on TheOtherRoles by <color=#FCCE03FF>Eisbison</color>.<br>Additional artwork by <color=#FCCE03FF>SvettyScribbles</color> and <color=#FCCE03FF>JustASysAdmin</color>.</size>";
+$@"模组制作：<color=#FCCE03FF>JustASysAdmin</color>, 原版超多职业作者： <color=#FCCE03FF>Eisbison</color>. 其他图片:<color=#FCCE03FF>SvettyScribbles</color>和<color=#FCCE03FF>JustASysAdmin</color>.
+汉化:<color=#ff351f>四个憨批汉化组</color> 翻译:<color=#FFFFE0>Among us</color></size>";
 
         public static string contributorsCredentials =
-$@"<size=60%> <color=#FCCE03FF>Special thanks to K3ndo & Smeggy</color></size>";
+$@"<size=60%> <color=#FCCE03FF>特别感谢:K3ndo & Smeggy</color></size>";
 
         [HarmonyPatch(typeof(VersionShower), nameof(VersionShower.Start))]
         private static class VersionShowerPatch
@@ -61,10 +63,10 @@ $@"<size=60%> <color=#FCCE03FF>Special thanks to K3ndo & Smeggy</color></size>";
                 __instance.text.alignment = TMPro.TextAlignmentOptions.TopRight;
                 if (AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started) {
                     string gameModeText = $"";
-                    if (HideNSeek.isHideNSeekGM) gameModeText = $"Hide 'N Seek";
-                    else if (HandleGuesser.isGuesserGm) gameModeText = $"Guesser";
+                    if (HideNSeek.isHideNSeekGM) gameModeText = $"躲猫猫模式";
+                    else if (HandleGuesser.isGuesserGm) gameModeText = $"赌怪模式";
                     if (gameModeText != "") gameModeText = Helpers.cs(Color.yellow, gameModeText) + "\n";
-                    __instance.text.text = $"<size=130%><color=#ff351f>TheOtherRoles</color></size> v{TheOtherRolesPlugin.Version.ToString() + (TheOtherRolesPlugin.betaDays > 0 ? "-BETA" : "")}\n{gameModeText}" + __instance.text.text;
+                    __instance.text.text = $"<size=130%><color=#ff351f>超多职业CE</color></size> v{TheOtherRolesPlugin.Version.ToString() + (TheOtherRolesPlugin.betaDays > 0 ? "-BETA" : "")}\n{gameModeText}" + __instance.text.text;
                     if (CachedPlayer.LocalPlayer.Data.IsDead || (!(CachedPlayer.LocalPlayer.PlayerControl == null) && (CachedPlayer.LocalPlayer.PlayerControl == Lovers.lover1 || CachedPlayer.LocalPlayer.PlayerControl == Lovers.lover2))) {
                         __instance.transform.localPosition = new Vector3(3.45f, __instance.transform.localPosition.y, __instance.transform.localPosition.z);
                     } else {
@@ -72,8 +74,8 @@ $@"<size=60%> <color=#FCCE03FF>Special thanks to K3ndo & Smeggy</color></size>";
                     }
                 } else {
                     string gameModeText = $"";
-                    if (MapOptionsTor.gameMode == CustomGamemodes.HideNSeek) gameModeText = $"Hide 'N Seek";
-                    else if (MapOptionsTor.gameMode == CustomGamemodes.Guesser) gameModeText = $"Guesser";
+                    if (MapOptionsTor.gameMode == CustomGamemodes.HideNSeek) gameModeText = $"躲猫猫模式";
+                    else if (MapOptionsTor.gameMode == CustomGamemodes.Guesser) gameModeText = $"赌怪模式";
                     if (gameModeText != "") gameModeText = Helpers.cs(Color.yellow, gameModeText) + "\n";
 
                     __instance.text.text = $"{fullCredentialsVersion}\n  {gameModeText + fullCredentials}\n {__instance.text.text}";
