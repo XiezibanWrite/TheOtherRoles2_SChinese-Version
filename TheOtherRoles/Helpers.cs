@@ -404,7 +404,7 @@ public static bool isPlayerLover(PlayerControl player) {
         }
 
         public static AudioClip loadAudioClipFromResources(string path, string clipName = "UNNAMED_TOR_AUDIO_CLIP") {
-            // must be "raw (headerless) 2-channel signed 32 bit pcm (le)" (can e.g. use Audacity® to export)
+            // must be "raw (headerless) 2-channel signed 32 bit pcm (le)" (can e.g. use Audacity?to export)
             try {
                 Assembly assembly = Assembly.GetExecutingAssembly();
                 Stream stream = assembly.GetManifestResourceStream(path);
@@ -969,7 +969,6 @@ public static bool isPlayerLover(PlayerControl player) {
                 || (Thief.thief != null && Thief.thief.PlayerId == player.PlayerId && Thief.hasImpostorVision)
                 || (Werewolf.werewolf != null && Werewolf.werewolf.PlayerId == player.PlayerId)
                 || (Swooper.swooper != null && Swooper.swooper.PlayerId == player.PlayerId && Swooper.hasImpVision);
-
         }
         
         public static object TryCast(this Il2CppObjectBase self, Type type)

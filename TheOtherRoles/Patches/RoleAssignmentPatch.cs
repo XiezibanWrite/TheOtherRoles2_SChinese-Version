@@ -117,7 +117,7 @@ namespace TheOtherRoles.Patches {
             neutralSettings.Add((byte)RoleId.Vulture, CustomOptionHolder.vultureSpawnRate.getSelection());
             neutralSettings.Add((byte)RoleId.Thief, CustomOptionHolder.thiefSpawnRate.getSelection());
 
-            if (false) // Lawyer or Prosecutor
+            if ((rnd.Next(1, 101) <= CustomOptionHolder.lawyerIsProsecutorChance.getSelection() * 10)) // Lawyer or Prosecutor
                 neutralSettings.Add((byte)RoleId.Prosecutor, CustomOptionHolder.lawyerSpawnRate.getSelection());
             else
                 neutralSettings.Add((byte)RoleId.Lawyer, CustomOptionHolder.lawyerSpawnRate.getSelection());
@@ -284,12 +284,14 @@ namespace TheOtherRoles.Patches {
                 crewValues -= crewSteps;
             }
 
+
             // --- Assign Main Roles if they won the lottery ---
             if (isSheriff && Sheriff.sheriff == null && data.crewmates.Count > 0 && data.maxCrewmateRoles > 0 && sheriffFlag) { // Set Sheriff cause he won the lottery
                 byte sheriff = setRoleToRandomPlayer((byte)RoleId.Sheriff, data.crewmates);
                 data.crewmates.ToList().RemoveAll(x => x.PlayerId == sheriff);
                 data.maxCrewmateRoles--;
             }
+
 
             // --- Assign Dependent Roles if main role exists ---
             if (Sheriff.sheriff != null) { // Deputy
@@ -300,6 +302,7 @@ namespace TheOtherRoles.Patches {
                 } else if (CustomOptionHolder.deputySpawnRate.getSelection() < 10) // Dont force, add Deputy to the ticket system
                     data.crewSettings.Add((byte)RoleId.Deputy, CustomOptionHolder.deputySpawnRate.getSelection());
             }
+           
 
         }
         private static void assignChanceRoles(RoleAssignmentData data) {
@@ -562,11 +565,14 @@ namespace TheOtherRoles.Patches {
 
             byte playerId;
             // Remove Guesser if isGuesserGamemode
-			if (isGuesserGamemode) {
-				modifiers.RemoveAll(x => x == RoleId.EvilGuesser);
-				modifiers.RemoveAll(x => x == RoleId.NiceGuesser);
-			}
-			
+            if (isGuesserGamemode)
+            {
+                modifiers.RemoveAll(x => x == RoleId.EvilGuesser);
+                modifiers.RemoveAll(x => x == RoleId.NiceGuesser);
+            }
+
+
+
             if (modifiers.Contains(RoleId.EvilGuesser)) {
                 List<PlayerControl> impPlayer = new List<PlayerControl>(playerList);
                 impPlayer.RemoveAll(x => !x.Data.Role.IsImpostor);

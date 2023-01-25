@@ -668,19 +668,20 @@ namespace TheOtherRoles
                     Amnisiac.clearAndReload();
                     Amnisiac.amnisiac = target;
                     break;
-					
+
                 case RoleId.Thief:
                     if (Amnisiac.resetRole) Thief.clearAndReload();
                     Thief.thief = amnisiac;
                     Amnisiac.clearAndReload();
                     Amnisiac.amnisiac = target;
                     break;
-                    
+
                 case RoleId.BodyGuard:
                     if (Amnisiac.resetRole) BodyGuard.clearAndReload();
                     BodyGuard.bodyguard = amnisiac;
                     Amnisiac.clearAndReload();
                     break;
+
                     
                 case RoleId.Werewolf:
                     if (Amnisiac.resetRole) Werewolf.clearAndReload();
@@ -701,7 +702,7 @@ namespace TheOtherRoles
                     Mayor.mayor = amnisiac;
                     Amnisiac.clearAndReload();
                     break;
-					
+
                 case RoleId.Trapper:
                     if (Amnisiac.resetRole) Trapper.clearAndReload();
                     Trapper.trapper = amnisiac;
@@ -1265,10 +1266,7 @@ namespace TheOtherRoles
             if (Lawyer.target == player && Lawyer.isProsecutor && Lawyer.lawyer != null && !Lawyer.lawyer.Data.IsDead) Lawyer.isProsecutor = false;
 
             if (!Jackal.canCreateSidekickFromImpostor && player.Data.Role.IsImpostor) {
-				if (Jackal.killFakeImpostor) {
-					uncheckedMurderPlayer(Jackal.jackal.PlayerId, player.PlayerId, 1);
-				} else
-					Jackal.fakeSidekick = player;
+                Jackal.fakeSidekick = player;
             } else {
                 bool wasSpy = Spy.spy != null && player == Spy.spy;
                 bool wasImpostor = player.Data.Role.IsImpostor;  // This can only be reached if impostors can be sidekicked.
@@ -1436,7 +1434,7 @@ namespace TheOtherRoles
                     int timeLeft = (int)(totalTime - (totalTime * p));
                     if (timeLeft <= Bomber.bombTimer) {
                         if (Bomber.timeLeft != timeLeft) {
-                            new CustomMessage("Your Bomb will explode in " + timeLeft + " seconds!", 1f);
+                            new CustomMessage("你的炸弹将会在 " + timeLeft + " 秒内爆炸!", 1f);
                             Bomber.timeLeft = timeLeft;
                         }
                         if (timeLeft % 5 == 0) {
@@ -1582,7 +1580,7 @@ namespace TheOtherRoles
             Trickster.lightsOutTimer = Trickster.lightsOutDuration;
             // If the local player is impostor indicate lights out
             if(Helpers.hasImpVision(GameData.Instance.GetPlayerById(CachedPlayer.LocalPlayer.PlayerId))) {
-                new CustomMessage("Lights are out", Trickster.lightsOutDuration);
+                new CustomMessage("灯光灭了", Trickster.lightsOutDuration);
             }
         }
 
@@ -1599,7 +1597,7 @@ namespace TheOtherRoles
 
             var camera = UnityEngine.Object.Instantiate<SurvCamera>(referenceCamera);
             camera.transform.position = new Vector3(position.x, position.y, referenceCamera.transform.position.z - 1f);
-            camera.CamName = $"Security Camera {SecurityGuard.placedCameras}";
+            camera.CamName = $"安保摄像头 {SecurityGuard.placedCameras}";
             camera.Offset = new Vector3(0f, 0f, camera.Offset.z);
             if (PlayerControl.GameOptions.MapId == 2 || PlayerControl.GameOptions.MapId == 4) camera.transform.localRotation = new Quaternion(0, 0, 1, 1); // Polus and Airship 
 
@@ -1751,7 +1749,7 @@ namespace TheOtherRoles
             PlayerControl guessedTarget = Helpers.playerById(guessedTargetId);
             if (CachedPlayer.LocalPlayer.Data.IsDead && guessedTarget != null && guesser != null) {
                 RoleInfo roleInfo = RoleInfo.allRoleInfos.FirstOrDefault(x => (byte)x.roleId == guessedRoleId);
-                string msg = $"{guesser.Data.PlayerName} guessed the role {roleInfo?.name ?? ""} for {guessedTarget.Data.PlayerName}!";
+                string msg = $"{guesser.Data.PlayerName} 猜测{guessedTarget.Data.PlayerName} 的职业为 {roleInfo?.name ?? ""}!";
                 if (AmongUsClient.Instance.AmClient && FastDestroyableSingleton<HudManager>.Instance)
                     FastDestroyableSingleton<HudManager>.Instance.Chat.AddChat(guesser, msg);
                 if (msg.IndexOf("who", StringComparison.OrdinalIgnoreCase) >= 0)
