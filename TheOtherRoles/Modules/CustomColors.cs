@@ -25,78 +25,126 @@ namespace TheOtherRoles.Modules {
             List<CustomColor> colors = new List<CustomColor>();
 
             /* Custom Colors */
-            colors.Add(new CustomColor { longname = "PuThorple",
-                                        color = new Color32(150, 2, 242, byte.MaxValue), // shadow = new Color32(0xA5, 0x63, 0x65, byte.MaxValue),
-                                        shadow = new Color32(17, 6, 38, byte.MaxValue), // color = new Color32(0xD8, 0x82, 0x83, byte.MaxValue),
-                                        isLighterColor = true });
-            colors.Add(new CustomColor { longname = "Bordeaux",
-                                        color = new Color32(109, 7, 26, byte.MaxValue), 
-                                        shadow = new Color32(54, 2, 11, byte.MaxValue),
-                                        isLighterColor = false });
-            colors.Add(new CustomColor { longname = "ParaGreen",
-                                        color = new Color32(50, 205, 50, byte.MaxValue), 
-                                        shadow = new Color32(42, 245, 154, byte.MaxValue),
-                                        isLighterColor = false });
-            colors.Add(new CustomColor { longname = "Turqoise",
-                                        color = new Color32(22, 132, 176, byte.MaxValue), 
-                                        shadow = new Color32(15, 89, 117, byte.MaxValue),
-                                        isLighterColor = false });
-            colors.Add(new CustomColor { longname = "Mint", 
-                                        color = new Color32(111, 192, 156, byte.MaxValue), 
-                                        shadow = new Color32(65, 148, 111, byte.MaxValue),
-                                        isLighterColor = true });
-            colors.Add(new CustomColor { longname = "Lavender",
-                                        color = new Color32(173, 126, 201, byte.MaxValue), 
-                                        shadow = new Color32(131, 58, 203, byte.MaxValue),
-                                        isLighterColor = true });
-            colors.Add(new CustomColor { longname = "Zougat",
-                                        color = new Color32(160, 101, 56, byte.MaxValue), 
-                                        shadow = new Color32(115, 15, 78, byte.MaxValue),
-                                        isLighterColor = false });
-            colors.Add(new CustomColor { longname = "LuLuBlue", // 25
-                                        color = new Color32(148, 190, 224, byte.MaxValue), 
-                                        shadow = new Color32(100, 135, 163, byte.MaxValue),
-                                        isLighterColor = true });
-            colors.Add(new CustomColor { longname = "IrishPat", // 26
-                                        color = new Color32(0, 158, 95, byte.MaxValue), 
-                                        shadow = new Color32(1, 120, 72, byte.MaxValue),
-                                        isLighterColor = false });
-            colors.Add(new CustomColor { longname = "LilyBan", //27
-                                        color = new Color32(94, 203, 200, byte.MaxValue),
-                                        shadow = new Color32(182, 109, 255, byte.MaxValue),
-                                        isLighterColor = true });
-            colors.Add(new CustomColor { longname = "DuckGreen",  // 28
-                                        color = new Color32(35, 107, 56, byte.MaxValue), 
-                                        shadow = new Color32(26, 28, 27, byte.MaxValue),
-                                        isLighterColor = false });
-            colors.Add(new CustomColor { longname = "NorthOrange", // 29
-                                        color = new Color32(255, 185, 0, byte.MaxValue),
-                                        shadow = new Color32(255, 175, 0, byte.MaxValue),
-                                        isLighterColor = true });
+            colors.Add(new CustomColor
+            {
+                longname = "璞玉色",
+                color = new Color32(150, 2, 242, byte.MaxValue), // shadow = new Color32(0xA5, 0x63, 0x65, byte.MaxValue),
+                shadow = new Color32(17, 6, 38, byte.MaxValue), // color = new Color32(0xD8, 0x82, 0x83, byte.MaxValue),
+                isLighterColor = true
+            });
+            colors.Add(new CustomColor
+            {
+                longname = "枣色",
+                color = new Color32(109, 7, 26, byte.MaxValue),
+                shadow = new Color32(54, 2, 11, byte.MaxValue),
+                isLighterColor = false
+            });
+            colors.Add(new CustomColor
+            {
+                longname = "珀尔绿色",
+                color = new Color32(50, 205, 50, byte.MaxValue),
+                shadow = new Color32(42, 245, 154, byte.MaxValue),
+                isLighterColor = false
+            });
+            colors.Add(new CustomColor
+            {
+                longname = "土耳其色",
+                color = new Color32(22, 132, 176, byte.MaxValue),
+                shadow = new Color32(15, 89, 117, byte.MaxValue),
+                isLighterColor = false
+            });
+            colors.Add(new CustomColor
+            {
+                longname = "薄荷色",
+                color = new Color32(111, 192, 156, byte.MaxValue),
+                shadow = new Color32(65, 148, 111, byte.MaxValue),
+                isLighterColor = true
+            });
+            colors.Add(new CustomColor
+            {
+                longname = "淡紫色",
+                color = new Color32(173, 126, 201, byte.MaxValue),
+                shadow = new Color32(131, 58, 203, byte.MaxValue),
+                isLighterColor = true
+            });
+            colors.Add(new CustomColor
+            {
+                longname = "西皮绿色",
+                color = new Color32(160, 101, 56, byte.MaxValue),
+                shadow = new Color32(115, 15, 78, byte.MaxValue),
+                isLighterColor = false
+            });
+            colors.Add(new CustomColor
+            {
+                longname = "卢蓝色", // 25
+                color = new Color32(148, 190, 224, byte.MaxValue),
+                shadow = new Color32(100, 135, 163, byte.MaxValue),
+                isLighterColor = true
+            });
+            colors.Add(new CustomColor
+            {
+                longname = "艾石帕色", // 26
+                color = new Color32(0, 158, 95, byte.MaxValue),
+                shadow = new Color32(1, 120, 72, byte.MaxValue),
+                isLighterColor = false
+            });
+            colors.Add(new CustomColor
+            {
+                longname = "佰合邦色", //27
+                color = new Color32(196, 235, 241, byte.MaxValue),
+                shadow = new Color32(255, 255, 194, byte.MaxValue),
+                isLighterColor = true
+            });
+            colors.Add(new CustomColor
+            {
+                longname = "鸭绿色",  // 28
+                color = new Color32(35, 107, 56, byte.MaxValue),
+                shadow = new Color32(26, 28, 27, byte.MaxValue),
+                isLighterColor = false
+            });
+            colors.Add(new CustomColor
+            {
+                longname = "北橙色", // 29
+                color = new Color32(255, 185, 0, byte.MaxValue),
+                shadow = new Color32(255, 175, 0, byte.MaxValue),
+                isLighterColor = true
+            });
 
-	    // NEW COLORS START ON ID 30!!!!
-            colors.Add(new CustomColor { longname = "Panda", //30
-			                 color = new Color32(0xE5, 0xE5, 0xE5, byte.MaxValue),
-			                 shadow = new Color32(0x0C, 0x0C, 0x0C, byte.MaxValue),
-			                 isLighterColor = true });
+            // NEW COLORS START ON ID 30!!!!
+            colors.Add(new CustomColor
+            {
+                longname = "熊猫色", //30
+                color = new Color32(0xE5, 0xE5, 0xE5, byte.MaxValue),
+                shadow = new Color32(0x0C, 0x0C, 0x0C, byte.MaxValue),
+                isLighterColor = true
+            });
 
-            colors.Add(new CustomColor { longname = "True dark", //31
- 			                 color = new Color32(0x00, 0x00, 0x00, byte.MaxValue),
-  			                 shadow = new Color32(0x13, 0x13, 0x13, byte.MaxValue),
-			                 isLighterColor = false });
+            colors.Add(new CustomColor
+            {
+                longname = "纯黑色", //31
+                color = new Color32(0x00, 0x00, 0x00, byte.MaxValue),
+                shadow = new Color32(0x13, 0x13, 0x13, byte.MaxValue),
+                isLighterColor = false
+            });
 
-            colors.Add(new CustomColor { longname = "LJBlue", //32
- 			                 color = new Color32(48, 213, 200, byte.MaxValue),
-  			                 shadow = new Color32(0, 0, 139, byte.MaxValue),
-			                 isLighterColor = true });
+            colors.Add(new CustomColor
+            {
+                longname = "乐及色", //32
+                color = new Color32(48, 213, 200, byte.MaxValue),
+                shadow = new Color32(0, 0, 139, byte.MaxValue),
+                isLighterColor = true
+            });
 
-            colors.Add(new CustomColor { longname = "ScoomRed", //33
- 			                 color = new Color32(59, 5, 5, byte.MaxValue),
-  			                 shadow = new Color32(0, 0, 0, byte.MaxValue),
-			                 isLighterColor = false });
+            colors.Add(new CustomColor
+            {
+                longname = "斯库姆红", //33
+                color = new Color32(59, 5, 5, byte.MaxValue),
+                shadow = new Color32(0, 0, 0, byte.MaxValue),
+                isLighterColor = false
+            });
 
-            colors.Add(new CustomColor { longname = "SvettyBlue", //34
- 			                 color = new Color32(19, 54, 82, byte.MaxValue),
+            colors.Add(new CustomColor{longname = "斯维蒂蓝", //34
+                color = new Color32(19, 54, 82, byte.MaxValue),
   			                 shadow = new Color32(9, 34, 56, byte.MaxValue),
 			                 isLighterColor = false });
 
