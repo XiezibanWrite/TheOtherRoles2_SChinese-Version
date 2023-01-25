@@ -10,17 +10,18 @@ namespace TheOtherRoles.Patches {
     [HarmonyPatch]
     public static class CredentialsPatch {
         public static string fullCredentialsVersion = 
-$@"<size=130%><color=#ff351f>超多职业CE版</color></size> v{TheOtherRolesPlugin.Version.ToString() + (TheOtherRolesPlugin.betaDays>0 ? "-测试版": "")}";
+$@"<size=130%><color=#ff351f>超多职业CE版</color></size> v{TheOtherRolesPlugin.Version.ToString() + (TheOtherRolesPlugin.betaDays>0 ? "-BETA": "")}";
 
-        public static string fullCredentials =
+        public static string fullCredentials = 
 $@"<size=60%>
 模组制作：<color=#FCCE03FF>JustASysAdmin</color>, 原版超多职业作者： <color=#FCCE03FF>Eisbison</color>.<br>其他图片:<color=#FCCE03FF>SvettyScribbles</color>和<color=#FCCE03FF>JustASysAdmin</color>.
 汉化:<color=#ff351f>四个憨批汉化组</color>
 翻译:<color=#FFFFE0>Among us</color></size>";
 
-        public static string mainMenuCredentials =
+    public static string mainMenuCredentials = 
 $@"模组制作：<color=#FCCE03FF>JustASysAdmin</color>, 原版超多职业作者： <color=#FCCE03FF>Eisbison</color>. 其他图片:<color=#FCCE03FF>SvettyScribbles</color>和<color=#FCCE03FF>JustASysAdmin</color>.
 汉化:<color=#ff351f>四个憨批汉化组</color> 翻译:<color=#FFFFE0>Among us</color></size>";
+
         public static string contributorsCredentials =
 $@"<size=60%> <color=#FCCE03FF>特别感谢:K3ndo & Smeggy</color></size>";
 
@@ -62,10 +63,10 @@ $@"<size=60%> <color=#FCCE03FF>特别感谢:K3ndo & Smeggy</color></size>";
                 __instance.text.alignment = TMPro.TextAlignmentOptions.TopRight;
                 if (AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started) {
                     string gameModeText = $"";
-                    if (HideNSeek.isHideNSeekGM) gameModeText = $"躲猫猫";
-                    else if (HandleGuesser.isGuesserGm) gameModeText = $"赌怪";
+                    if (HideNSeek.isHideNSeekGM) gameModeText = $"躲猫猫模式";
+                    else if (HandleGuesser.isGuesserGm) gameModeText = $"赌怪模式";
                     if (gameModeText != "") gameModeText = Helpers.cs(Color.yellow, gameModeText) + "\n";
-                    __instance.text.text = $"<size=130%><color=#ff351f>超多职业CE版</color></size> v{TheOtherRolesPlugin.Version.ToString() + (TheOtherRolesPlugin.betaDays > 0 ? "-测试版" : "")}\n{gameModeText}<size=80%>汉化:<color=#ff351f>四个憨批汉化组</color>\namonguscn.club </size>" + __instance.text.text;
+                    __instance.text.text = $"<size=130%><color=#ff351f>超多职业CE</color></size> v{TheOtherRolesPlugin.Version.ToString() + (TheOtherRolesPlugin.betaDays > 0 ? "-BETA" : "")}\n{gameModeText}" + __instance.text.text;
                     if (CachedPlayer.LocalPlayer.Data.IsDead || (!(CachedPlayer.LocalPlayer.PlayerControl == null) && (CachedPlayer.LocalPlayer.PlayerControl == Lovers.lover1 || CachedPlayer.LocalPlayer.PlayerControl == Lovers.lover2))) {
                         __instance.transform.localPosition = new Vector3(3.45f, __instance.transform.localPosition.y, __instance.transform.localPosition.z);
                     } else {
@@ -73,8 +74,8 @@ $@"<size=60%> <color=#FCCE03FF>特别感谢:K3ndo & Smeggy</color></size>";
                     }
                 } else {
                     string gameModeText = $"";
-                    if (MapOptions.gameMode == CustomGamemodes.HideNSeek) gameModeText = $"躲猫猫模式";
-                    else if (MapOptions.gameMode == CustomGamemodes.Guesser) gameModeText = $"赌怪模式";
+                    if (MapOptionsTor.gameMode == CustomGamemodes.HideNSeek) gameModeText = $"躲猫猫模式";
+                    else if (MapOptionsTor.gameMode == CustomGamemodes.Guesser) gameModeText = $"赌怪模式";
                     if (gameModeText != "") gameModeText = Helpers.cs(Color.yellow, gameModeText) + "\n";
 
                     __instance.text.text = $"{fullCredentialsVersion}\n  {gameModeText + fullCredentials}\n {__instance.text.text}";
@@ -105,7 +106,7 @@ $@"<size=60%> <color=#FCCE03FF>特别感谢:K3ndo & Smeggy</color></size>";
 
                 instance = __instance;
                 loadSprites();
-                renderer.sprite = MapOptions.enableHorseMode ? horseBannerSprite : bannerSprite;
+                renderer.sprite = MapOptionsTor.enableHorseMode ? horseBannerSprite : bannerSprite;
             }
 
             public static void loadSprites() {
@@ -120,7 +121,7 @@ $@"<size=60%> <color=#FCCE03FF>特别感谢:K3ndo & Smeggy</color></size>";
                     instance.StartCoroutine(Effects.Lerp(fadeDuration, new Action<float>((p) => {
                         renderer.color = new Color(1, 1, 1, 1 - p);
                         if (p == 1) {
-                            renderer.sprite = MapOptions.enableHorseMode ? horseBannerSprite : bannerSprite;
+                            renderer.sprite = MapOptionsTor.enableHorseMode ? horseBannerSprite : bannerSprite;
                             instance.StartCoroutine(Effects.Lerp(fadeDuration, new Action<float>((p) => {
                                 renderer.color = new Color(1, 1, 1, p);
                             })));

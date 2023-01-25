@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using static TheOtherRoles.TheOtherRoles;
-using static TheOtherRoles.MapOptions;
+using static TheOtherRoles.MapOptionsTor;
 using TheOtherRoles.Objects;
 using System;
 using TheOtherRoles.Players;
@@ -146,7 +146,7 @@ namespace TheOtherRoles.Patches {
             public static bool Prefix(MeetingHud __instance, [HarmonyArgument(0)]GameData.PlayerInfo voterPlayer, [HarmonyArgument(1)]int index, [HarmonyArgument(2)]Transform parent) {
                 SpriteRenderer spriteRenderer = UnityEngine.Object.Instantiate<SpriteRenderer>(__instance.PlayerVotePrefab);
                 int cId = voterPlayer.DefaultOutfit.ColorId;
-                if (!(!PlayerControl.GameOptions.AnonymousVotes || (CachedPlayer.LocalPlayer.Data.IsDead && MapOptions.ghostsSeeVotes) || Mayor.mayor != null && CachedPlayer.LocalPlayer.PlayerControl == Mayor.mayor && Mayor.canSeeVoteColors && TasksHandler.taskInfo(CachedPlayer.LocalPlayer.Data).Item1 >= Mayor.tasksNeededToSeeVoteColors))
+                if (!(!GameOptionsManager.Instance.currentNormalGameOptions.AnonymousVotes || (CachedPlayer.LocalPlayer.Data.IsDead && MapOptionsTor.ghostsSeeVotes) || Mayor.mayor != null && CachedPlayer.LocalPlayer.PlayerControl == Mayor.mayor && Mayor.canSeeVoteColors && TasksHandler.taskInfo(CachedPlayer.LocalPlayer.Data).Item1 >= Mayor.tasksNeededToSeeVoteColors))
                     voterPlayer.Object.SetColor(6);                    
                 voterPlayer.Object.SetPlayerMaterialColors(spriteRenderer);
                 spriteRenderer.transform.SetParent(parent);
@@ -356,18 +356,18 @@ namespace TheOtherRoles.Patches {
                 if (HandleGuesser.isGuesserGm && CachedPlayer.LocalPlayer.PlayerControl.Data.Role.IsImpostor && !HandleGuesser.evilGuesserCanGuessSpy && roleInfo.roleId == RoleId.Spy) continue;
                 // remove all roles that cannot spawn due to the settings from the ui.
                 RoleManagerSelectRolesPatch.RoleAssignmentData roleData = RoleManagerSelectRolesPatch.getRoleAssignmentData();
-             //   if (roleInfo.roleId == RoleId.Swooper)
-               //     if (CustomOptionHolder.swooperSpawnRate.getSelection() == 0) continue;
-           //     else if (roleData.neutralSettings.ContainsKey((byte)roleInfo.roleId) && roleData.neutralSettings[(byte)roleInfo.roleId] == 0) continue;
-            //    else if (roleData.impSettings.ContainsKey((byte)roleInfo.roleId) && roleData.impSettings[(byte)roleInfo.roleId] == 0) continue;
-            //    else if (roleData.crewSettings.ContainsKey((byte)roleInfo.roleId) && roleData.crewSettings[(byte)roleInfo.roleId] == 0) continue;
-            //    else if (new List<RoleId>() { RoleId.Janitor, RoleId.Godfather, RoleId.Mafioso }.Contains(roleInfo.roleId) && CustomOptionHolder.mafiaSpawnRate.getSelection() == 0) continue;
-             //   else if (roleInfo.roleId == RoleId.Sidekick && (!CustomOptionHolder.jackalCanCreateSidekick.getBool() || CustomOptionHolder.jackalSpawnRate.getSelection() == 0)) continue;
-              //  if (roleInfo.roleId == RoleId.Deputy && (CustomOptionHolder.deputySpawnRate.getSelection() == 0 || CustomOptionHolder.sheriffSpawnRate.getSelection() == 0)) continue;
+                // if (roleInfo.roleId == RoleId.Swooper)
+                    // if (CustomOptionHolder.swooperSpawnRate.getSelection() == 0) continue;
+                // else if (roleData.neutralSettings.ContainsKey((byte)roleInfo.roleId) && roleData.neutralSettings[(byte)roleInfo.roleId] == 0) continue;
+                // else if (roleData.impSettings.ContainsKey((byte)roleInfo.roleId) && roleData.impSettings[(byte)roleInfo.roleId] == 0) continue;
+                // else if (roleData.crewSettings.ContainsKey((byte)roleInfo.roleId) && roleData.crewSettings[(byte)roleInfo.roleId] == 0) continue;
+                // else if (new List<RoleId>() { RoleId.Janitor, RoleId.Godfather, RoleId.Mafioso }.Contains(roleInfo.roleId) && CustomOptionHolder.mafiaSpawnRate.getSelection() == 0) continue;
+                // else if (roleInfo.roleId == RoleId.Sidekick && (!CustomOptionHolder.jackalCanCreateSidekick.getBool() || CustomOptionHolder.jackalSpawnRate.getSelection() == 0)) continue;
+                // if (roleInfo.roleId == RoleId.Deputy && (CustomOptionHolder.deputySpawnRate.getSelection() == 0 || CustomOptionHolder.sheriffSpawnRate.getSelection() == 0)) continue;
                 if (roleInfo.roleId == RoleId.Pursuer && CustomOptionHolder.lawyerSpawnRate.getSelection() == 0) continue;
                 if (roleInfo.roleId == RoleId.Spy && roleData.impostors.Count <= 1) continue;
-           //     if (roleInfo.roleId == RoleId.Prosecutor && (CustomOptionHolder.lawyerIsProsecutorChance.getSelection() == 0 || CustomOptionHolder.lawyerSpawnRate.getSelection() == 0)) continue;
-           //     if (roleInfo.roleId == RoleId.Lawyer && (CustomOptionHolder.lawyerIsProsecutorChance.getSelection() == 10 || CustomOptionHolder.lawyerSpawnRate.getSelection() == 0)) continue;
+                // if (roleInfo.roleId == RoleId.Prosecutor && (CustomOptionHolder.lawyerIsProsecutorChance.getSelection() == 0 || CustomOptionHolder.lawyerSpawnRate.getSelection() == 0)) continue;
+                // if (roleInfo.roleId == RoleId.Lawyer && (CustomOptionHolder.lawyerIsProsecutorChance.getSelection() == 10 || CustomOptionHolder.lawyerSpawnRate.getSelection() == 0)) continue;
                 if (Snitch.snitch != null && HandleGuesser.guesserCantGuessSnitch) {
                     var (playerCompleted, playerTotal) = TasksHandler.taskInfo(Snitch.snitch.Data);
                     int numberOfLeftTasks = playerTotal - playerCompleted;
@@ -616,7 +616,7 @@ namespace TheOtherRoles.Patches {
                 if (meetingTarget == null) meetingsCount++;
                 // Save the meeting target
                 target = meetingTarget;
-
+				MapOptionsTor.isRoundOne = false;
                 
                 if (Blackmailer.blackmailed == CachedPlayer.LocalPlayer.PlayerControl) { Helpers.BlackmailShhh(); }
 
@@ -634,7 +634,7 @@ namespace TheOtherRoles.Patches {
                 if (Trapper.trapper != null && CachedPlayer.LocalPlayer.PlayerControl == Trapper.trapper) {
                     foreach (Trap trap in Trap.traps) {
                         if (!trap.revealed) continue;
-                        string message = $"ÏÝÚå {trap.instanceId}: \n";
+                        string message = $"Trap {trap.instanceId}: \n";
                         trap.trappedPlayer = trap.trappedPlayer.OrderBy(x => rnd.Next()).ToList();
                         foreach (PlayerControl p in trap.trappedPlayer) {
                             if (Trapper.infoType == 0) message += RoleInfo.GetRolesString(p, false, false) + "\n";
@@ -672,9 +672,10 @@ namespace TheOtherRoles.Patches {
                 if (__instance.state >= MeetingHud.VoteStates.Discussion)
                 {
                     // Remove first kill shield
-                    MapOptions.firstKillPlayer = null;
+                    MapOptionsTor.firstKillPlayer = null;
                 }
-                if (Blackmailer.blackmailer != null ) {
+                
+				if (Blackmailer.blackmailer != null && Blackmailer.blackmailed != null) {
                     // Blackmailer show overlay
                     var playerState = __instance.playerStates.FirstOrDefault(x => x.TargetPlayerId == Blackmailer.blackmailed.PlayerId);
                     playerState.Overlay.gameObject.SetActive(true);
@@ -684,6 +685,7 @@ namespace TheOtherRoles.Patches {
                         (__instance as MonoBehaviour).StartCoroutine(Effects.SwayX(playerState.transform));
                     }
                 }
+				
             }
         }
 
@@ -711,6 +713,7 @@ namespace TheOtherRoles.Patches {
 
 	public static void Postfix(MeetingHud __instance) {
 		shookAlready = false;
+		if (Blackmailer.blackmailed == null) return;
 		if (Blackmailer.blackmailed.Data.PlayerId == CachedPlayer.LocalPlayer.PlayerId && !Blackmailer.blackmailed.Data.IsDead) {
 			  // Nothing here for now. What to do when local player who is blackmailed starts meeting
 			  //Coroutines.Start(BlackmailShhh());

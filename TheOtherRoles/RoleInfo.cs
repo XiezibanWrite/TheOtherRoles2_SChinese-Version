@@ -37,6 +37,7 @@ namespace TheOtherRoles
         public static RoleInfo mayor = new RoleInfo("市长", Mayor.color, "你的投票算作两票", "你的投票算作两票", RoleId.Mayor);
         public static RoleInfo portalmaker = new RoleInfo("传送门制造商", Portalmaker.color, "你可以新建传送门", "你可以新建传送门", RoleId.Portalmaker);
         public static RoleInfo engineer = new RoleInfo("工程师", Engineer.color, "修理船上的破坏", "修理破坏", RoleId.Engineer);
+        public static RoleInfo privateInvestigator = new RoleInfo("私家侦探",  PrivateInvestigator.color, "完了 我目标跟丢了 ", "监视船上的一举一动.", RoleId.PrivateInvestigator);
         public static RoleInfo sheriff = new RoleInfo("警长", Sheriff.color, "杀死 <color=#FF1919FF>内鬼</color>", "杀死内鬼", RoleId.Sheriff);
         public static RoleInfo bodyguard = new RoleInfo("保镖", BodyGuard.color, "用自己的生命保护他人", "你是守卫它人的盾牌!", RoleId.BodyGuard, false);
         public static RoleInfo deputy = new RoleInfo("捕快", Sheriff.color, "用手铐铐住 <color=#FF1919FF>内鬼</color>", "用手铐铐住内鬼", RoleId.Deputy);
@@ -46,6 +47,8 @@ namespace TheOtherRoles
         public static RoleInfo janitor = new RoleInfo("清洁工（黑手党)", Janitor.color, "帮助<color=#FF1919FF>黑手党</color>隐藏尸体", "隐藏尸体", RoleId.Janitor);
         public static RoleInfo morphling = new RoleInfo("化形者", Morphling.color, "改变你的外观以避免被识出", "改变你的外观", RoleId.Morphling);
         public static RoleInfo bomber = new RoleInfo("炸弹手", Bomber.color, "给玩家提供炸弹", "炸死所有人", RoleId.Bomber);
+        public static RoleInfo poucher = new RoleInfo("职知者", Poucher.color, "我杀死的这人什么职业啊", "调查杀人事件", RoleId.Poucher);
+		public static RoleInfo mimic = new RoleInfo("职业模仿者", Mimic.color, "杀死一名船员并伪装船员的职业", "伪装成船员", RoleId.Mimic);
         public static RoleInfo camouflager = new RoleInfo("隐蔽者", Camouflager.color, "隐蔽并杀死船员们", "隐藏在其他人之中", RoleId.Camouflager);
         public static RoleInfo miner = new RoleInfo("管道工", Miner.color, "新建新的管道", "创建管道", RoleId.Miner);
         public static RoleInfo vampire = new RoleInfo("吸血鬼", Vampire.color, "用你的牙杀死船员们", "咬死你的敌人", RoleId.Vampire);
@@ -79,6 +82,7 @@ namespace TheOtherRoles
         public static RoleInfo impostor = new RoleInfo("内鬼", Palette.ImpostorRed, Helpers.cs(Palette.ImpostorRed, "破坏并杀死所有人"), "破坏并杀死所有人", RoleId.Impostor);
         public static RoleInfo crewmate = new RoleInfo("船员", Color.white, "找到内鬼", "找到内鬼", RoleId.Crewmate);
         public static RoleInfo witch = new RoleInfo("女巫", Witch.color, "对你的敌人施放咒语", "对你的敌人施放咒语", RoleId.Witch);
+        //public static RoleInfo cultist = new RoleInfo("Cultist", Cultist.color, "为你的事业而招募", "Recruit for your cause", RoleId.Cultist);
         public static RoleInfo ninja = new RoleInfo("忍者", Ninja.color, "出其不意地刺杀你的敌人", "出其不意地刺杀你的敌人", RoleId.Ninja);
         public static RoleInfo blackmailer = new RoleInfo("勒索者", Blackmailer.color, "敲诈那些试图伤害你的人", "敲诈那些试图伤害你的人", RoleId.Blackmailer);
         public static RoleInfo thief = new RoleInfo("窃贼", Thief.color, "通过杀死杀手来窃取他们的角色", "窃取杀手的角色", RoleId.Thief, true);
@@ -104,6 +108,7 @@ namespace TheOtherRoles
         public static RoleInfo blind = new RoleInfo("盲人", Color.yellow, "你不能看见报告按键!", "那是一具尸体吗?", RoleId.Blind, false, true);
         public static RoleInfo tunneler = new RoleInfo("隧道工", Color.yellow, "完成你的任务，以获得钻管道的能力", "完成工作，你就可以玩了", RoleId.Tunneler, false, true);
         public static RoleInfo goodGuesser = new RoleInfo("正义的赌怪", Color.yellow, "猜测和射杀", "猜测和射杀", RoleId.NiceGuesser, false, true);
+        public static RoleInfo paranoid  = new RoleInfo("偏执狂", Color.yellow, "注意你身后!", "利用你的偏执来完成任务!", RoleId.Paranoid, false, true);
         public static RoleInfo badGuesser = new RoleInfo("邪恶的赌怪", Color.yellow, "猜测和射杀", "猜测和射杀", RoleId.EvilGuesser, false, true);
 
         public static RoleInfo chameleon = new RoleInfo("变色龙", Color.yellow, "当你不移动时别人很难看见你", "当你不移动时别人很难看见你", RoleId.Chameleon, false, true);
@@ -134,6 +139,9 @@ namespace TheOtherRoles
             miner,
 			swooper,
             goodGuesser,
+			privateInvestigator,
+			mimic,
+			poucher,
             badGuesser,
             lover,
             jester,
@@ -177,6 +185,7 @@ namespace TheOtherRoles
             slueth,
             blind,
             tunneler,
+			paranoid,
             invert,
             chameleon,
             shifter
@@ -206,6 +215,7 @@ namespace TheOtherRoles
                 if (p == Mini.mini) infos.Add(mini);
                 if (p == Blind.blind) infos.Add(blind);
                 if (p == Tunneler.tunneler) infos.Add(tunneler);
+                if (p == Paranoid.paranoid) infos.Add(paranoid);
                 if (p == Slueth.slueth) infos.Add(slueth);
                 if (Invert.invert.Any(x => x.PlayerId == p.PlayerId)) infos.Add(invert);
                 if (p == Guesser.niceGuesser) infos.Add(goodGuesser);
@@ -240,12 +250,16 @@ namespace TheOtherRoles
             if (p == Cleaner.cleaner) infos.Add(cleaner);
             if (p == Undertaker.undertaker) infos.Add(undertaker);
             if (p == Bomber.bomber) infos.Add(bomber);
+            if (p == Mimic.mimic) infos.Add(mimic);
+            if (p == Poucher.poucher) infos.Add(poucher);
+            if (p == PrivateInvestigator.privateInvestigator) infos.Add(privateInvestigator);
             if (p == Warlock.warlock) infos.Add(warlock);
             if (p == Witch.witch) infos.Add(witch);
             if (p == Ninja.ninja) infos.Add(ninja);
             if (p == Blackmailer.blackmailer) infos.Add(blackmailer);
             if (p == Detective.detective) infos.Add(detective);
             if (p == TimeMaster.timeMaster) infos.Add(timeMaster);
+            //if (p == Cultist.cultist) infos.Add(cultist);
             if (p == Amnisiac.amnisiac) infos.Add(amnisiac);
             if (p == Veteren.veteren) infos.Add(veteren);
             if (p == Medic.medic) infos.Add(medic);
@@ -275,9 +289,9 @@ namespace TheOtherRoles
             // Default roles (just impostor, just crewmate, or hunter / hunted for hide n seek
             if (infos.Count == count) {
                 if (p.Data.Role.IsImpostor)
-                    infos.Add(MapOptions.gameMode == CustomGamemodes.HideNSeek ? RoleInfo.hunter : RoleInfo.impostor);
+                    infos.Add(MapOptionsTor.gameMode == CustomGamemodes.HideNSeek ? RoleInfo.hunter : RoleInfo.impostor);
                 else
-                    infos.Add(MapOptions.gameMode == CustomGamemodes.HideNSeek ? RoleInfo.hunted : RoleInfo.crewmate);
+                    infos.Add(MapOptionsTor.gameMode == CustomGamemodes.HideNSeek ? RoleInfo.hunted : RoleInfo.crewmate);
             }
 
             return infos;

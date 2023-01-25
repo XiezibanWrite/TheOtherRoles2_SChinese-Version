@@ -245,7 +245,7 @@ namespace TheOtherRoles.Patches {
             }
 
             // Display lighter / darker color for all alive players
-            if (CachedPlayer.LocalPlayer != null && MeetingHud.Instance != null && MapOptions.showLighterDarker) {
+            if (CachedPlayer.LocalPlayer != null && MeetingHud.Instance != null && MapOptionsTor.showLighterDarker) {
                 foreach (PlayerVoteArea player in MeetingHud.Instance.playerStates) {
                     var target = Helpers.playerById(player.TargetPlayerId);
                     if (target != null)  player.NameText.text += $" ({(Helpers.isLighterColor(target.Data.DefaultOutfit.ColorId) ? "L" : "D")})";
@@ -276,11 +276,9 @@ namespace TheOtherRoles.Patches {
 
         public static void miniUpdate() {
             if (Mini.mini == null || Camouflager.camouflageTimer > 0f || Mini.mini == Morphling.morphling && Morphling.morphTimer > 0f || Mini.mini == Ninja.ninja && Ninja.isInvisble || Mini.mini == Swooper.swooper && Swooper.isInvisable || Helpers.isActiveCamoComms()) return;
-
+                
             float growingProgress = Mini.growingProgress();
             float scale = growingProgress * 0.35f + 0.35f;
-
-
             string suffix = "";
             if (growingProgress != 1f)
                 suffix = " <color=#FAD934FF>(" + Mathf.FloorToInt(growingProgress * 18) + ")</color>"; 
@@ -318,6 +316,20 @@ namespace TheOtherRoles.Patches {
             if (Deputy.handcuffedKnows.ContainsKey(CachedPlayer.LocalPlayer.PlayerId) && Deputy.handcuffedKnows[CachedPlayer.LocalPlayer.PlayerId] > 0) __instance.KillButton.Hide();
         }
 
+        static void updateParanoid() {
+			if (CachedPlayer.LocalPlayer.PlayerControl != Paranoid.paranoid) return;
+            if (PlayerControl.LocalPlayer.Data.IsDead || PlayerControl.LocalPlayer.Data.Disconnected) return;
+            if (!Minigame.Instance) return;
+            var Base = Minigame.Instance as MonoBehaviour;
+            SpriteRenderer[] rends = Base.GetComponentsInChildren<SpriteRenderer>();
+            for (int i = 0; i < rends.Length; i++)
+            {
+                var oldColor1 = rends[i].color[0];
+                var oldColor2 = rends[i].color[1];
+                var oldColor3 = rends[i].color[2];
+                rends[i].color = new Color(oldColor1, oldColor2, oldColor3, 0.5f);
+            }
+		}
         static void updateReportButton(HudManager __instance) {
             if (Deputy.handcuffedKnows.ContainsKey(CachedPlayer.LocalPlayer.PlayerId) && Deputy.handcuffedKnows[CachedPlayer.LocalPlayer.PlayerId] > 0 || MeetingHud.Instance) __instance.ReportButton.Hide();
             else if (!__instance.ReportButton.isActiveAndEnabled) __instance.ReportButton.Show();
@@ -335,12 +347,12 @@ namespace TheOtherRoles.Patches {
         }
 
         static void updateSabotageButton(HudManager __instance) {
-            if (MeetingHud.Instance) __instance.SabotageButton.Hide();
+            if (MeetingHud.Instance || MapOptionsTor.gameMode == CustomGamemodes.HideNSeek) __instance.SabotageButton.Hide();
         }
 
         static void updateMapButton(HudManager __instance) {
-            if (Trapper.trapper == null || !(CachedPlayer.LocalPlayer.PlayerId == Trapper.trapper.PlayerId) || __instance == null || __instance.MapButton == null) return;
-            __instance.MapButton.color = Trapper.playersOnMap.Any() ? Trapper.color : Color.white;
+            if (Trapper.trapper == null || !(CachedPlayer.LocalPlayer.PlayerId == Trapper.trapper.PlayerId) || __instance == null || __instance.MapButton.HeldButtonSprite == null) return;
+            __instance.MapButton.HeldButtonSprite.color = Trapper.playersOnMap.Any() ? Trapper.color : Color.white;
         }
 
         static void Postfix(HudManager __instance)
@@ -367,6 +379,7 @@ namespace TheOtherRoles.Patches {
             updateSabotageButton(__instance);
             updateUseButton(__instance);
             updateBlindReport();
+			updateParanoid();
             updateMapButton(__instance);
 
         }
