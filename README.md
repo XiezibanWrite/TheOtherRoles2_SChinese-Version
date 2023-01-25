@@ -16,7 +16,7 @@ Even more roles are coming soon. :)
 
 | Impostors | Crewmates | Neutral | Modifier |
 |----------|-------------|-----------------|----------------|
-| [Godfather (Mafia)](#mafia) | [Shifter](#shifter) | [Jester](#jester) | [Bloody](#bloody) |
+| [教父（黑手党)](#mafia) | [Shifter](#shifter) | [Jester](#jester) | [Bloody](#bloody) |
 | [Mafioso (Mafia)](#mafia) | [Mayor](#mayor) | [Arsonist](#arsonist) | [Anti Teleport](#anti-teleport) |
 | [Janitor (Mafia)](#mafia) | [Engineer](#engineer) | [Jackal](#jackal) | [Tie Breaker](#tie-breaker) |
 | [Morphling](#morphling) | [Sheriff](#sheriff) | [Sidekick](#sidekick) | [Bait](#bait) |
@@ -25,8 +25,8 @@ Even more roles are coming soon. :)
 | [Eraser](#eraser) | [Detective](#detective) | [Prosecutor](#prosecutor) | [Mini](#mini) |
 | [Trickster](#trickster) | [Time Master](#time-master) | [Amnesiac](#amnesiac) | [VIP](#vip) |
 | [Cleaner](#cleaner) | [Medic](#medic) | [Swooper](#swooper) | [Invert](#invert) |
-| [Warlock](#warlock) | [Swapper](#swapper) |
-| [Bounty Hunter](#bounty-hunter) | [Seer](#seer) |  |
+| [Warlock](#warlock) | [Swapper](#swapper) |||
+| [Bounty Hunter](#bounty-hunter) | [Seer](#seer) |  ||
 | [Witch](#witch) | [Hacker](#hacker) |  |  |
 | [Ninja](#ninja) | [Tracker](#tracker) |  |  |
 | [Miner](#miner) | [Snitch](#snitch) |  |  |
@@ -34,7 +34,7 @@ Even more roles are coming soon. :)
 | [Evil Guesser](#guesser) | [Portalmaker](#portalmaker) |  |  |
 |  | [Security Guard](#security-guard) |  |  |
 |  | [Medium](#medium) |  |  |
-|  | [Nice Guesser](#guesser) |  |
+|  | [Nice Guesser](#guesser) |  ||
 
 The [Role Assignment](#role-assignment) sections explains how the roles are being distributed among the players.
 
@@ -108,7 +108,7 @@ The [Role Assignment](#role-assignment) sections explains how the roles are bein
 # Changelog
 <details>
   <summary>Click to show the Changelog</summary>
-  
+
 **Version 4.1.6**  
 - Added Sound Effects: Most buttons / role funcionalities now have a sound!
 - Added a mod option: Enable Sound Effects  
@@ -142,6 +142,7 @@ The [Role Assignment](#role-assignment) sections explains how the roles are bein
 - Fixed a bug where players with Anti TP were stuck on Airship 
 - Removed streamer mode
   
+
 **Version 4.1.4**
 - Added auto updating for BepInEx
 - Fixed hat testing in freeplay for meetings / exile etc.
@@ -176,6 +177,7 @@ The [Role Assignment](#role-assignment) sections explains how the roles are bein
 - Fixed the Popup  
 - Fixed some ui bugs  
   
+
 **Version 4.1.0**
 - Added support for the Submerged map (https://github.com/SubmergedAmongUs/Submerged), which can be downloaded ingame with the Update button. If there is also a mod update, it will be prioritized
 - Added an option to give the Mayor a portable Meeting Button
@@ -183,6 +185,7 @@ The [Role Assignment](#role-assignment) sections explains how the roles are bein
 - Removed Lawyer option "Wins after Meetings"
 - Changed Medium question if the killer of a body is the Mini, the medium can now randomly ask the role question
   
+
 **Version 4.0.0**
 - Added new role [Ninja](#ninja) thanks [gendelo3](https://github.com/gendelo3)
 - Added new role [Portalmaker](#portalmaker) thanks [gendelo3](https://github.com/gendelo3)
@@ -215,6 +218,7 @@ The [Role Assignment](#role-assignment) sections explains how the roles are bein
 **Version 3.4.4**
 - Fixed a bug where games were not finished properly on offical servers (special thanks to miniduikboot & 6pak)
   
+
 **Version 3.4.3**
 - Fixed a bug where "Guesser Is Impostor Chance" crashed the role system
 - Fixed a bug where a sidekicked Hacker was stuck
@@ -227,9 +231,11 @@ The [Role Assignment](#role-assignment) sections explains how the roles are bein
 **Version 3.4.2**
 - Fixed a game breaking bug
   
+
 **Version 3.4.2**
 - Fixed a game breaking bug
   
+
 **Version 3.4.1**
 - Added a new mod option "Show Lighter/Darker" for meetings
 - Added options for choosing which maps are enabled for random maps thanks [EvilScum](https://github.com/JustASysAdmin)
@@ -1918,7 +1924,7 @@ The [Role Assignment](#role-assignment) sections explains how the roles are bein
 # Changelog
 <details>
   <summary>Click to show the Changelog</summary>
-  
+
 **Version 4.1.5**
 - Updated to Among Us version 2022.6.21
 - Added Custom servers (Modded EU & Modded NA). Thanks to [miniduikboot](https://github.com/miniduikboot) & GD
@@ -1934,6 +1940,7 @@ The [Role Assignment](#role-assignment) sections explains how the roles are bein
 - Fixed a bug where players with Anti TP were stuck on Airship 
 - Removed streamer mode
   
+
 **Version 4.1.4**
 - Added auto updating for BepInEx
 - Fixed hat testing in freeplay for meetings / exile etc.
@@ -1968,6 +1975,7 @@ The [Role Assignment](#role-assignment) sections explains how the roles are bein
 - Fixed the Popup  
 - Fixed some ui bugs  
   
+
 **Version 4.1.0**
 - Added support for the Submerged map (https://github.com/SubmergedAmongUs/Submerged), which can be downloaded ingame with the Update button. If there is also a mod update, it will be prioritized
 - Added an option to give the Mayor a portable Meeting Button
@@ -1975,6 +1983,7 @@ The [Role Assignment](#role-assignment) sections explains how the roles are bein
 - Removed Lawyer option "Wins after Meetings"
 - Changed Medium question if the killer of a body is the Mini, the medium can now randomly ask the role question
   
+
 **Version 4.0.0**
 - Added new role [Ninja](#ninja) thanks [gendelo3](https://github.com/gendelo3)
 - Added new role [Portalmaker](#portalmaker) thanks [gendelo3](https://github.com/gendelo3)
@@ -2007,6 +2016,7 @@ The [Role Assignment](#role-assignment) sections explains how the roles are bein
 **Version 3.4.4**
 - Fixed a bug where games were not finished properly on offical servers (special thanks to miniduikboot & 6pak)
   
+
 **Version 3.4.3**
 - Fixed a bug where "Guesser Is Impostor Chance" crashed the role system
 - Fixed a bug where a sidekicked Hacker was stuck
@@ -2019,9 +2029,11 @@ The [Role Assignment](#role-assignment) sections explains how the roles are bein
 **Version 3.4.2**
 - Fixed a game breaking bug
   
+
 **Version 3.4.2**
 - Fixed a game breaking bug
   
+
 **Version 3.4.1**
 - Added a new mod option "Show Lighter/Darker" for meetings
 - Added options for choosing which maps are enabled for random maps thanks [EvilScum](https://github.com/JustASysAdmin)

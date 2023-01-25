@@ -70,53 +70,72 @@ namespace TheOtherRoles.Patches {
                         continue;
                     else if (!playerVersions.ContainsKey(client.Id))  {
                         versionMismatch = true;
-                        message += $"<color=#FF0000FF>{client.Character.Data.PlayerName} has a different or no version of The Other Roles\n</color>";
-                    } else {
+                        message += $"<color=#FF0000FF>{client.Character.Data.PlayerName} 没安装或安装了一个不同版本的超多职业\n</color>";
+                    }
+                    else
+                    {
                         PlayerVersion PV = playerVersions[client.Id];
                         int diff = TheOtherRolesPlugin.Version.CompareTo(PV.version);
-                        if (diff > 0) {
-                            message += $"<color=#FF0000FF>{client.Character.Data.PlayerName} has an older version of The Other Roles (v{playerVersions[client.Id].version.ToString()})\n</color>";
+                        if (diff > 0)
+                        {
+                            message += $"<color=#FF0000FF>{client.Character.Data.PlayerName} 安装了一个旧版本的超多职业 (v{playerVersions[client.Id].version.ToString()})\n</color>";
                             versionMismatch = true;
-                        } else if (diff < 0) {
-                            message += $"<color=#FF0000FF>{client.Character.Data.PlayerName} has a newer version of The Other Roles (v{playerVersions[client.Id].version.ToString()})\n</color>";
+                        }
+                        else if (diff < 0)
+                        {
+                            message += $"<color=#FF0000FF>{client.Character.Data.PlayerName} 安装了一个新版本的超多职业(v{playerVersions[client.Id].version.ToString()})\n</color>";
                             versionMismatch = true;
-                        } else if (!PV.GuidMatches()) { // version presumably matches, check if Guid matches
-                            message += $"<color=#FF0000FF>{client.Character.Data.PlayerName} has a modified version of TOR v{playerVersions[client.Id].version.ToString()} <size=30%>({PV.guid.ToString()})</size>\n</color>";
+                        }
+                        else if (!PV.GuidMatches())
+                        { // version presumably matches, check if Guid matches
+                            message += $"<color=#FF0000FF>{client.Character.Data.PlayerName} 安装了一个修改版本的超多职业 v{playerVersions[client.Id].version.ToString()} <size=30%>({PV.guid.ToString()})</size>\n</color>";
                             versionMismatch = true;
                         }
                     }
                 }
 
                 // Display message to the host
-                if (AmongUsClient.Instance.AmHost) {
-                    if (versionMismatch) {
+                if (AmongUsClient.Instance.AmHost)
+                {
+                    if (versionMismatch)
+                    {
                         __instance.StartButton.color = __instance.startLabelText.color = Palette.DisabledClear;
                         __instance.GameStartText.text = message;
                         __instance.GameStartText.transform.localPosition = __instance.StartButton.transform.localPosition + Vector3.up * 2;
-                    } else {
+                    }
+                    else
+                    {
                         __instance.StartButton.color = __instance.startLabelText.color = ((__instance.LastPlayerCount >= __instance.MinPlayers) ? Palette.EnabledColor : Palette.DisabledClear);
                         __instance.GameStartText.transform.localPosition = __instance.StartButton.transform.localPosition;
                     }
                 }
 
                 // Client update with handshake infos
-                else {
-                    if (!playerVersions.ContainsKey(AmongUsClient.Instance.HostId) || TheOtherRolesPlugin.Version.CompareTo(playerVersions[AmongUsClient.Instance.HostId].version) != 0) {
+                else
+                {
+                    if (!playerVersions.ContainsKey(AmongUsClient.Instance.HostId) || TheOtherRolesPlugin.Version.CompareTo(playerVersions[AmongUsClient.Instance.HostId].version) != 0)
+                    {
                         kickingTimer += Time.deltaTime;
-                        if (kickingTimer > 10) {
+                        if (kickingTimer > 10)
+                        {
                             kickingTimer = 0;
-			                AmongUsClient.Instance.ExitGame(DisconnectReasons.ExitGame);
+                            AmongUsClient.Instance.ExitGame(DisconnectReasons.ExitGame);
                             SceneChanger.ChangeScene("MainMenu");
                         }
 
-                        __instance.GameStartText.text = $"<color=#FF0000FF>The host has no or a different version of The Other Roles\nYou will be kicked in {Math.Round(10 - kickingTimer)}s</color>";
+                        __instance.GameStartText.text = $"<color=#FF0000FF>房主没有或安装了不同的超多职业版本\n你将会在{Math.Round(10 - kickingTimer)}秒内被踢出</color>";
                         __instance.GameStartText.transform.localPosition = __instance.StartButton.transform.localPosition + Vector3.up * 2;
-                    } else if (versionMismatch) {
-                        __instance.GameStartText.text = $"<color=#FF0000FF>Players With Different Versions:\n</color>" + message;
+                    }
+                    else if (versionMismatch)
+                    {
+                        __instance.GameStartText.text = $"<color=#FF0000FF>玩家使用了一个不同的版本:\n</color>" + message;
                         __instance.GameStartText.transform.localPosition = __instance.StartButton.transform.localPosition + Vector3.up * 2;
-                    } else {
+                    }
+                    else
+                    {
                         __instance.GameStartText.transform.localPosition = __instance.StartButton.transform.localPosition;
-                        if (__instance.startState != GameStartManager.StartingStates.Countdown) {
+                        if (__instance.startState != GameStartManager.StartingStates.Countdown)
+                        {
                             __instance.GameStartText.text = String.Empty;
                         }
                     }

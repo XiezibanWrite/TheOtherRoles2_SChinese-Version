@@ -301,11 +301,11 @@ namespace TheOtherRoles.Patches {
                 if (roleInfo.color == Palette.ImpostorRed) isCrew = false;
                 if (isCrew) {
                     __instance.BackgroundBar.material.color = roleInfo.color;
-                    __instance.TeamTitle.text = "Crewmate";
+                    __instance.TeamTitle.text = "船员";
                     __instance.TeamTitle.color = Color.cyan;
                 } else {
                     __instance.BackgroundBar.material.color = roleInfo.color;
-                    __instance.TeamTitle.text = "Impostor";
+                    __instance.TeamTitle.text = "内鬼";
                     __instance.TeamTitle.color = Palette.ImpostorRed;
                 }
             }
@@ -347,20 +347,22 @@ namespace TheOtherRoles.Patches {
                         __instance.RoleBlurbText.text += Helpers.cs(modifierInfo.color, $"\n{modifierInfo.introDescription}");
                     else {
                         PlayerControl otherLover = CachedPlayer.LocalPlayer.PlayerControl == Lovers.lover1 ? Lovers.lover2 : Lovers.lover1;
-                        __instance.RoleBlurbText.text += Helpers.cs(Lovers.color, $"\n♥ You are in love with {otherLover?.Data?.PlayerName ?? ""} ♥");
+                        __instance.RoleBlurbText.text += Helpers.cs(Lovers.color, $"\n♥ 你与{otherLover?.Data?.PlayerName ?? "相爱了"} ♥");
                     }
                 }
-				
-				if (infos.Any(info => info.roleId == RoleId.Prosecutor)) {
+
+                if (infos.Any(info => info.roleId == RoleId.Prosecutor))
+                {
                     PlayerControl target = Prosecutor.target;
-                    __instance.RoleBlurbText.text += Helpers.cs(Prosecutor.color, $"\nVote out {target?.Data?.PlayerName ?? ""} ");
+                    __instance.RoleBlurbText.text += Helpers.cs(Prosecutor.color, $"\n投出 {target?.Data?.PlayerName ?? ""} ");
                 }
 
-                if (Deputy.knowsSheriff && Deputy.deputy != null && Sheriff.sheriff != null) {
+                if (Deputy.knowsSheriff && Deputy.deputy != null && Sheriff.sheriff != null)
+                {
                     if (infos.Any(info => info.roleId == RoleId.Sheriff))
-                        __instance.RoleBlurbText.text += Helpers.cs(Sheriff.color, $"\nYour Deputy is {Deputy.deputy?.Data?.PlayerName ?? ""}");
+                        __instance.RoleBlurbText.text += Helpers.cs(Sheriff.color, $"\n你的捕快时 {Deputy.deputy?.Data?.PlayerName ?? ""}");
                     else if (infos.Any(info => info.roleId == RoleId.Deputy))
-                        __instance.RoleBlurbText.text += Helpers.cs(Sheriff.color, $"\nYour Sheriff is {Sheriff.sheriff?.Data?.PlayerName ?? ""}");
+                        __instance.RoleBlurbText.text += Helpers.cs(Sheriff.color, $"\n你的警长是{Sheriff.sheriff?.Data?.PlayerName ?? ""}");
                 }
             }
             public static bool Prefix(IntroCutscene __instance) {

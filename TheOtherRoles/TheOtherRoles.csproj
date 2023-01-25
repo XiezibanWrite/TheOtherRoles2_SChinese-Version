@@ -19,8 +19,8 @@
         <PackageReference Include="BepInEx.IL2CPP.MSBuild" Version="1.1.1" />
     </ItemGroup>
 
-    <Target Name="CopyCustomContent" AfterTargets="AfterBuild" Condition="Exists('$(AmongUsLatest)/BepInEx/plugins/')">
+    <Target Name="CopyCustomContent" AfterTargets="AfterBuild" Condition="Exists('D:\steam\steamapps\common\Among Us/BepInEx/plugins/')">
         <Message Text="Second occurrence" />
-        <Copy SourceFiles="$(ProjectDir)\bin\$(Configuration)\netstandard2.1\TheOtherRoles.dll" DestinationFolder="$(AmongUsLatest)/BepInEx/plugins/" />
+        <Copy SourceFiles="D:\TORCE\TheOtherRoles2-5.6.4\TheOtherRoles\bin\$(Configuration)\netstandard2.1\TheOtherRoles.dll" DestinationFolder="D:\steam\steamapps\common\Among Us/BepInEx/plugins/" />
     </Target>
 </Project>
