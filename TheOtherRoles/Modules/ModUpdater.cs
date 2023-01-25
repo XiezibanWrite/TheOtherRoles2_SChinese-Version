@@ -99,7 +99,7 @@ namespace TheOtherRoles.Modules
 
             var text = button.transform.GetChild(0).GetComponent<TMP_Text>();
             string t = "Update";
-            if (TORUpdate is null && SubmergedUpdate is not null) t = SubmergedCompatibility.Loaded ? $"Update\nSubmerged" : $"Download\nSubmerged";
+            if (TORUpdate is null && SubmergedUpdate is not null) t = SubmergedCompatibility.Loaded ? $"更新\n潜艇地图" : $"下载\n潜艇地图";
 
             StartCoroutine(Effects.Lerp(0.1f, (System.Action<float>)(p => text.SetText(t))));
 
@@ -107,7 +107,7 @@ namespace TheOtherRoles.Modules
             passiveButton.OnMouseOut.AddListener((Action)(() => buttonSprite.color = text.color = Color.red));
 
             var isSubmerged = TORUpdate == null;
-            var announcement = $"<size=150%>A new <color=#FC0303>{(isSubmerged ? "Submerged" : "THE OTHER ROLES")}</color> update to {(isSubmerged ? SubmergedUpdate.Tag : TORUpdate.Tag)} is available</size>\n{(isSubmerged ? SubmergedUpdate.Content : TORUpdate.Content)}";
+            var announcement = $"<size=150%>一个新的 <color=#FC0303>{(isSubmerged ? "潜艇地图" : "超多职业")}</color> 更新到 {(isSubmerged ? SubmergedUpdate.Tag : TORUpdate.Tag)} 可用</size>\n{(isSubmerged ? SubmergedUpdate.Content : TORUpdate.Content)}";
             var mgr = FindObjectOfType<MainMenuManager>(true);
             if (isSubmerged && !SubmergedCompatibility.Loaded) showPopUp = false;
             if (showPopUp) mgr.StartCoroutine(CoShowAnnouncement(announcement));
@@ -119,7 +119,7 @@ namespace TheOtherRoles.Modules
         {
             updateInProgress = true;
             var isSubmerged = TORUpdate is null;
-            var updateName = (isSubmerged ? "Submerged" : "The Other Roles");
+            var updateName = (isSubmerged ? "潜艇地图" : "超多职业");
             
             var popup = Instantiate(TwitchManager.Instance.TwitchPopup);
             popup.TextAreaTMP.fontSize *= 0.7f;
@@ -129,13 +129,13 @@ namespace TheOtherRoles.Modules
 
             var button = popup.transform.GetChild(2).gameObject;
             button.SetActive(false);
-            popup.TextAreaTMP.text = $"Updating {updateName}\nPlease wait...";
+            popup.TextAreaTMP.text = $"更新 {updateName}中\n请稍等...";
             
             var download = Task.Run(DownloadUpdate);
             while (!download.IsCompleted) yield return null;
             
             button.SetActive(true);
-            popup.TextAreaTMP.text = download.Result ? $"{updateName}\nupdated successfully\nPlease restart the game." : "Update wasn't successful\nTry again later,\nor update manually.";
+            popup.TextAreaTMP.text = download.Result ? $"{updateName}\n更新成功\n请重启游戏." : "更新失败\n请稍后重试,\n或手动更新.";
         }
 
         [HideFromIl2Cpp]
