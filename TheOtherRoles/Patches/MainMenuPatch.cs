@@ -183,8 +183,8 @@ Goose-Goose-Duck - Idea for the Vulture role came from Slushiegoose</size>";
                 }));
 
                 template.StartCoroutine(Effects.Lerp(0.1f, new System.Action<float>((p) => {
-                    guesserButtonText.SetText("TOR Guesser");
-                    HideNSeekButtonText.SetText("TOR Hide N Seek");
+                    guesserButtonText.SetText("超多职业赌怪模式");
+                    HideNSeekButtonText.SetText("超多职业躲猫猫模式");
                  })));
             }));
         }
@@ -199,7 +199,7 @@ Goose-Goose-Duck - Idea for the Vulture role came from Slushiegoose</size>";
             if (ModUpdateBehaviour.showPopUp || updateData == null) return true;
 
             var text = __instance.AnnounceTextMeshPro;            
-            text.text = $"<size=150%><color=#FC0303>THE OTHER ROLES </color> {(updateData.Tag)}\n{(updateData.Content)}";
+            text.text = $"<size=150%><color=#FC0303>超多职业 </color> {(updateData.Tag)}\n{(updateData.Content)}";
 
             return false;
         }

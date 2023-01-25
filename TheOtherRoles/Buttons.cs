@@ -412,7 +412,7 @@ namespace TheOtherRoles
                 },
                 () => { return Sheriff.sheriff != null && Sheriff.sheriff == CachedPlayer.LocalPlayer.PlayerControl && !CachedPlayer.LocalPlayer.Data.IsDead; },
                 () => { 
-                    showTargetNameOnButton(Sheriff.currentTarget, sheriffKillButton, "KILL");
+                    showTargetNameOnButton(Sheriff.currentTarget, sheriffKillButton, "击杀");
                     return Sheriff.currentTarget && CachedPlayer.LocalPlayer.PlayerControl.CanMove;
                 },
                 () => { sheriffKillButton.Timer = sheriffKillButton.MaxTimer;},
@@ -441,7 +441,7 @@ namespace TheOtherRoles
                 },
                 () => { return (Deputy.deputy != null && Deputy.deputy == CachedPlayer.LocalPlayer.PlayerControl || Sheriff.sheriff != null && Sheriff.sheriff == CachedPlayer.LocalPlayer.PlayerControl && Sheriff.sheriff == Sheriff.formerDeputy && Deputy.keepsHandcuffsOnPromotion) && !CachedPlayer.LocalPlayer.Data.IsDead; },
                 () => {
-                    showTargetNameOnButton(Deputy.currentTarget, deputyHandcuffButton, "CUFF");
+                    showTargetNameOnButton(Deputy.currentTarget, deputyHandcuffButton, "手铐");
                     if (deputyButtonHandcuffsText != null) deputyButtonHandcuffsText.text = $"{Deputy.remainingHandcuffs}";
                     return ((Deputy.deputy != null && Deputy.deputy == CachedPlayer.LocalPlayer.PlayerControl && Deputy.currentTarget || Sheriff.sheriff != null && Sheriff.sheriff == CachedPlayer.LocalPlayer.PlayerControl && Sheriff.sheriff == Sheriff.formerDeputy && Sheriff.currentTarget) && Deputy.remainingHandcuffs > 0 && CachedPlayer.LocalPlayer.PlayerControl.CanMove);
                 },
@@ -530,7 +530,7 @@ namespace TheOtherRoles
                 },
                 () => { return Medic.medic != null && Medic.medic == CachedPlayer.LocalPlayer.PlayerControl && !CachedPlayer.LocalPlayer.Data.IsDead; },
                 () => { 
-                    showTargetNameOnButton(Medic.currentTarget, medicShieldButton, "SHIELD");
+                    showTargetNameOnButton(Medic.currentTarget, medicShieldButton, "护盾");
                     return !Medic.usedShield && Medic.currentTarget && CachedPlayer.LocalPlayer.PlayerControl.CanMove;
                 },
                 () => {},
@@ -555,7 +555,7 @@ namespace TheOtherRoles
                 },
                 () => { return Shifter.shifter != null && Shifter.shifter == CachedPlayer.LocalPlayer.PlayerControl && !CachedPlayer.LocalPlayer.Data.IsDead; },
                 () => {
-                    showTargetNameOnButton(Shifter.currentTarget, shifterShiftButton, "SHIFT");
+                    showTargetNameOnButton(Shifter.currentTarget, shifterShiftButton, "交换");
                     return Shifter.currentTarget && Shifter.futureShift == null && CachedPlayer.LocalPlayer.PlayerControl.CanMove;
                 },
                 () => { },
@@ -604,7 +604,7 @@ namespace TheOtherRoles
                 () => { return Morphling.morphling != null && Morphling.morphling == CachedPlayer.LocalPlayer.PlayerControl && !CachedPlayer.LocalPlayer.Data.IsDead; },
                 () => {
                     if (Morphling.sampledTarget == null) 
-                        showTargetNameOnButton(Morphling.currentTarget, morphlingButton, "SAMPLE");
+                        showTargetNameOnButton(Morphling.currentTarget, morphlingButton, "取样");
                     return (Morphling.currentTarget || Morphling.sampledTarget) && CachedPlayer.LocalPlayer.PlayerControl.CanMove;
                 },
                 () => { 
@@ -856,7 +856,7 @@ namespace TheOtherRoles
                 () => { return BodyGuard.bodyguard != null && BodyGuard.bodyguard == CachedPlayer.LocalPlayer.PlayerControl && !CachedPlayer.LocalPlayer.Data.IsDead; },
                 () => { 
                     if (!BodyGuard.usedGuard)
-                        showTargetNameOnButton(BodyGuard.currentTarget, bodyGuardGuardButton, "Guard");
+                        showTargetNameOnButton(BodyGuard.currentTarget, bodyGuardGuardButton, "守护");
                     return CachedPlayer.LocalPlayer.PlayerControl.CanMove && BodyGuard.currentTarget != null && !BodyGuard.usedGuard;
                 },
                 () => { if(BodyGuard.reset) BodyGuard.resetGuarded(); },
@@ -879,7 +879,7 @@ namespace TheOtherRoles
                 () => { return PrivateInvestigator.privateInvestigator != null && PrivateInvestigator.privateInvestigator == CachedPlayer.LocalPlayer.PlayerControl && !CachedPlayer.LocalPlayer.Data.IsDead; },
                 () => { 
                     if (PrivateInvestigator.watching == null)
-                        showTargetNameOnButton(BodyGuard.currentTarget, bodyGuardGuardButton, "Watch");
+                        showTargetNameOnButton(BodyGuard.currentTarget, bodyGuardGuardButton, "监视");
                     return CachedPlayer.LocalPlayer.PlayerControl.CanMove && PrivateInvestigator.currentTarget != null && PrivateInvestigator.watching == null;
                 },
                 () => { PrivateInvestigator.watching = null; },
@@ -940,9 +940,9 @@ namespace TheOtherRoles
                 () => { return Vampire.vampire != null && Vampire.vampire == CachedPlayer.LocalPlayer.PlayerControl && !CachedPlayer.LocalPlayer.Data.IsDead; },
                 () => {
                     if (Vampire.targetNearGarlic) {
-                        showTargetNameOnButton(Vampire.currentTarget, vampireKillButton, "KILL");
+                        showTargetNameOnButton(Vampire.currentTarget, vampireKillButton, "击杀");
                     } else {
-                        showTargetNameOnButton(Vampire.currentTarget, vampireKillButton, "BITE");
+                        showTargetNameOnButton(Vampire.currentTarget, vampireKillButton, "吸血");
                     }
                     if (Vampire.targetNearGarlic && Vampire.canKillNearGarlics) {
                         vampireKillButton.actionButton.graphic.sprite = __instance.KillButton.graphic.sprite;
@@ -1088,7 +1088,7 @@ namespace TheOtherRoles
                 },
                 () => { return Jackal.jackal != null && Jackal.jackal == CachedPlayer.LocalPlayer.PlayerControl && !CachedPlayer.LocalPlayer.Data.IsDead; },
                 () => {
-                    showTargetNameOnButton(Jackal.currentTarget, jackalKillButton, "KILL");
+                    showTargetNameOnButton(Jackal.currentTarget, jackalKillButton, "击杀");
                     return Jackal.currentTarget && CachedPlayer.LocalPlayer.PlayerControl.CanMove;
                 },
                 () => { jackalKillButton.Timer = jackalKillButton.MaxTimer;},
@@ -1108,7 +1108,7 @@ namespace TheOtherRoles
                 },
                 () => { return Sidekick.canKill && Sidekick.sidekick != null && Sidekick.sidekick == CachedPlayer.LocalPlayer.PlayerControl && !CachedPlayer.LocalPlayer.Data.IsDead; },
                 () => { 
-                    showTargetNameOnButton(Sidekick.currentTarget, sidekickKillButton, "KILL");
+                    showTargetNameOnButton(Sidekick.currentTarget, sidekickKillButton, "击杀");
                     return Sidekick.currentTarget && CachedPlayer.LocalPlayer.PlayerControl.CanMove;
                 },
                 () => { sidekickKillButton.Timer = sidekickKillButton.MaxTimer;},
@@ -1170,7 +1170,7 @@ namespace TheOtherRoles
 					Swooper.currentTarget = null;
 				},
 				() => { return Swooper.swooper != null && Swooper.swooper == CachedPlayer.LocalPlayer.PlayerControl && !CachedPlayer.LocalPlayer.Data.IsDead; },
-				() => { showTargetNameOnButton(Swooper.currentTarget, swooperKillButton, "KILL"); return Swooper.currentTarget && CachedPlayer.LocalPlayer.PlayerControl.CanMove; },
+				() => { showTargetNameOnButton(Swooper.currentTarget, swooperKillButton, "击杀"); return Swooper.currentTarget && CachedPlayer.LocalPlayer.PlayerControl.CanMove; },
 				() => { swooperKillButton.Timer = swooperKillButton.MaxTimer;},
 				__instance.KillButton.graphic.sprite,
 				CustomButton.ButtonPositions.upperRowCenter,
@@ -1273,7 +1273,7 @@ namespace TheOtherRoles
                     Werewolf.currentTarget = null;
                 },
                 () => { return Werewolf.werewolf != null && Werewolf.werewolf == CachedPlayer.LocalPlayer.PlayerControl && !CachedPlayer.LocalPlayer.Data.IsDead && Werewolf.canKill; },
-                () => { showTargetNameOnButton(Werewolf.currentTarget, werewolfKillButton, "KILL"); return Werewolf.currentTarget && CachedPlayer.LocalPlayer.PlayerControl.CanMove; },
+                () => { showTargetNameOnButton(Werewolf.currentTarget, werewolfKillButton, "击杀"); return Werewolf.currentTarget && CachedPlayer.LocalPlayer.PlayerControl.CanMove; },
                 () => { werewolfKillButton.Timer = werewolfKillButton.MaxTimer;},
                 __instance.KillButton.graphic.sprite,
                 new Vector3(0, 1f, 0),
@@ -1341,7 +1341,7 @@ namespace TheOtherRoles
                 },
                 () => { return Eraser.eraser != null && Eraser.eraser == CachedPlayer.LocalPlayer.PlayerControl && !CachedPlayer.LocalPlayer.Data.IsDead; },
                 () => { 
-                    showTargetNameOnButton(Eraser.currentTarget, eraserButton, "ERASE");
+                    showTargetNameOnButton(Eraser.currentTarget, eraserButton, "抹除");
                     return CachedPlayer.LocalPlayer.PlayerControl.CanMove && Eraser.currentTarget != null;
                 },
                 () => { eraserButton.Timer = eraserButton.MaxTimer;},
@@ -1541,9 +1541,9 @@ namespace TheOtherRoles
                 () => { return Warlock.warlock != null && Warlock.warlock == CachedPlayer.LocalPlayer.PlayerControl && !CachedPlayer.LocalPlayer.Data.IsDead; },
                 () => { 
                     if (Warlock.curseVictim != null)
-                        showTargetNameOnButton(Warlock.currentTarget, warlockCurseButton, "KILL");
+                        showTargetNameOnButton(Warlock.currentTarget, warlockCurseButton, "击杀");
                     else
-                        showTargetNameOnButton(Warlock.currentTarget, warlockCurseButton, "CURSE");
+                        showTargetNameOnButton(Warlock.currentTarget, warlockCurseButton, "诅咒");
                     return ((Warlock.curseVictim == null && Warlock.currentTarget != null) || (Warlock.curseVictim != null && Warlock.curseVictimTarget != null)) && CachedPlayer.LocalPlayer.PlayerControl.CanMove;
                 },
                 () => { 
@@ -1840,15 +1840,15 @@ namespace TheOtherRoles
                     string msg = "";
 
                     int randomNumber = TheOtherRoles.rnd.Next(4);
-                    string typeOfColor = Helpers.isLighterColor(Medium.target.killerIfExisting.Data.DefaultOutfit.ColorId) ? "lighter" : "darker";
+                    string typeOfColor = Helpers.isLighterColor(Medium.target.killerIfExisting.Data.DefaultOutfit.ColorId) ? "浅色" : "深色";
                     float timeSinceDeath = ((float)(Medium.meetingStartTime - Medium.target.timeOfDeath).TotalMilliseconds);
                     string name = " (" + Medium.target.player.Data.PlayerName + ")";
 
 
-                    if (randomNumber == 0) msg = "What is your role? My role is " + RoleInfo.GetRolesString(Medium.target.player, false) + name;
-                    else if (randomNumber == 1) msg = "What is your killer`s color type? My killer is a " + typeOfColor + " color" + name;
-                    else if (randomNumber == 2) msg = "When did you die? I have died " + Math.Round(timeSinceDeath / 1000) + "s before meeting started" + name;
-                    else msg = "What is your killer`s role? My killer is " + RoleInfo.GetRolesString(Medium.target.killerIfExisting, false, false) + name;
+                    if (randomNumber == 0) msg = "你的职业是什么？我的职业是 " + RoleInfo.GetRolesString(Medium.target.player, false) + name;
+                    else if (randomNumber == 1) msg = "凶手是什么颜色类型的？凶手是 " + typeOfColor + " 的" + name;
+                    else if (randomNumber == 2) msg = "你什么时候死的？我死在会议前 " + Math.Round(timeSinceDeath / 1000) + "秒" + name;
+                    else msg = "击杀你凶手的职业是什么？它的职业是 " + RoleInfo.GetRolesString(Medium.target.killerIfExisting, false, false) + name;
 
                     FastDestroyableSingleton<HudManager>.Instance.Chat.AddChat(CachedPlayer.LocalPlayer.PlayerControl, $"{msg}");
 
@@ -1910,7 +1910,7 @@ namespace TheOtherRoles
                 },
                 () => { return Pursuer.pursuer != null && Pursuer.pursuer == CachedPlayer.LocalPlayer.PlayerControl && !CachedPlayer.LocalPlayer.Data.IsDead && Pursuer.blanks < Pursuer.blanksNumber; },
                 () => {
-                    showTargetNameOnButton(Pursuer.target, pursuerButton, "BLANK");
+                    showTargetNameOnButton(Pursuer.target, pursuerButton, "空包弹");
                     if (pursuerButtonBlanksText != null) pursuerButtonBlanksText.text = $"{Pursuer.blanksNumber - Pursuer.blanks}";
 
                     return Pursuer.blanksNumber > Pursuer.blanks && CachedPlayer.LocalPlayer.PlayerControl.CanMove && Pursuer.target != null;
@@ -1951,7 +1951,7 @@ namespace TheOtherRoles
                     return CachedPlayer.LocalPlayer.PlayerControl.CanMove && Witch.currentTarget != null;
                 },
                 () => {
-                    showTargetNameOnButton(null, arsonistButton, "SPELL");
+                    showTargetNameOnButton(null, arsonistButton, "");
                     witchSpellButton.Timer = witchSpellButton.MaxTimer;
                     witchSpellButton.isEffectActive = false;
                     Witch.spellCastingTarget = null;
@@ -2058,7 +2058,7 @@ namespace TheOtherRoles
                 },
                 () => { return Ninja.ninja != null && Ninja.ninja == CachedPlayer.LocalPlayer.PlayerControl && !CachedPlayer.LocalPlayer.Data.IsDead; },
                 () => {  // CouldUse
-                    showTargetNameOnButton(Ninja.currentTarget, ninjaButton, "NINJA");
+                    showTargetNameOnButton(Ninja.currentTarget, ninjaButton, "刺杀");
                     ninjaButton.Sprite = Ninja.ninjaMarked != null ? Ninja.getKillButtonSprite() : Ninja.getMarkButtonSprite(); 
                     return (Ninja.currentTarget != null || Ninja.ninjaMarked != null) && CachedPlayer.LocalPlayer.PlayerControl.CanMove;
                 },
